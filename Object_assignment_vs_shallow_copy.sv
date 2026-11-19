@@ -6,7 +6,7 @@ module test;
 
     function c2 copy();
     copy = new();
-    copy.b = this.b();
+    copy.b = this.b;
     endfunction
     
     function void display(string s);
@@ -26,10 +26,14 @@ module test;
     int a;
     
     function void display(string s);
-      
       $display("%s : The value of a is %d",s,a);
+    endfunction
 
-      endfunction
+    function c1 copy();
+      copy = new();
+      copy.a = this.a;
+      copy.c12_h1 = this.c12_h1.copy();  
+    endfunction
     
   endclass
   
@@ -45,6 +49,8 @@ module test;
     //c1_h2= c1_h1;//Object assignment
     c1_h2.a = 20;
     
+     c1_h2 = c1_h1.copy();
+
 //     c1_h1.display("1st Handle");
 //     c1_h2.display("2nd Handle");
     
